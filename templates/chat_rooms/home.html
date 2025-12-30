@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Rooms - Home</title>
+</head>
+<body>
+    {% extends "chat_rooms/base.html" %}
+
+    {% block content %}
+
+        <h1 style="text-align: center">
+            Welcome to my simple django chatting website</h1>
+
+        <p style="text-align: center; margin-top: 20px">
+            <a href="{% url 'chat_rooms:chatroom_list' %}">Here's the Chat Room</a>
+        </p>
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Room</title>
+
+</head>
+<body>
+    {% extends "chat_rooms/base.html" %}
+
+    {% block head %}
+        {% load static %}
+            <link href="{% static 'css/chat_room.css' %}" rel="stylesheet">
+    {% endblock head %}
+
+    {% block content %}
+
+        <h1 class="title">You Are Chatting With Someone</h1>
+
+        <p style="text-align: center">
+            <a href="{% url 'chat_rooms:chatroom_post' %}">Say hi</a>
+        </p>
+
+
+        <ul class="message_list">
+            {% for message in messages_context %}
+
+                <div>
+                    <p>-</p>
+                    <p>{{ message.date_posted}}</p>
+                    <p>{{ message.message_text }}</p>
+                </div>
+
+            {% empty %}
+                <p>There are no messages here yet...</p>
+
+            {% endfor %}
+        </ul>
+
+    {% endblock %}
+</body>
+</html>

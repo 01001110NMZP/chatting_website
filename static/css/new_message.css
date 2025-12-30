@@ -1,0 +1,37 @@
+.new_message_form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+button {
+    align-self: center;
+    border-style: solid;
+    background-color: yellow;
+    border-radius: 50px;
+
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+
+}
+
+.cancel_button {
+    background-color: red;
+    margin-right: 60px;
+    color: white;
+}
+
+
+.send_button_div {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
