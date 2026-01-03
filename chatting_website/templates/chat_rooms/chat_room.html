@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat Room</title>
+
+
+</head>
+<body>
+    {% extends "chat_rooms/base.html" %}
+
+    {% block head %}
+        {% load static %}
+            <link href="{% static 'css/chat_room.css' %}" rel="stylesheet">
+    {% endblock head %}
+
+    {% block content %}
+
+        <div class="whole_screen">
+            <div class="chat_rooms_section">
+
+                <div class="settings_and_search_bar">
+                        <img class="settings_icon" src="{% static 'assets/app_icons/settings.png' %}">
+                        <div class="search_bar_div">
+                            <input class="search_bar" type="text" placeholder="Search">
+                        </div>
+                    </div>
+
+                <div class="chat_room">
+
+                    <div class="individual_chat">
+                        <div class="profile_pic_section">
+                            {% load static %}
+                            <img class="profile_pic" src="{% static 'assets/images/stan.jpg' %}">
+                        </div>
+                        <div class="chat_metadata">
+                            <div class="name_and_time">
+                                <p class="user_name">Stan Du Claire</p>
+                                <p class="time_element">12:19 AM</p>
+                            </div>
+                            <p class="last_message">hi</p>
+                        </div>
+                    </div>
+
+                    <div class="individual_chat">
+                        <div class="profile_pic_section">
+                            {% load static %}
+                            <img class="profile_pic" src="{% static 'assets/images/knight.jpg' %}">
+                        </div>
+                        <div class="chat_metadata">
+                            <div class="name_and_time">
+                                <p class="user_name">Bob</p>
+                                <p class="time_element">12:26 AM</p>
+                            </div>
+                            <p class="last_message">Hey bud</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="chat_section">
+
+                <div class="chat_user_bar">
+                    <div class="user_chat_data">
+                        <p class="user_name">Stan Du Claire</p>
+                        <p style="font-size: 14px">last seen recently</p>
+                    </div>
+                    <img class="chat_user_bar_utils" src="{% static 'assets/app_icons/chat_utilities.png' %}">
+                </div>
+
+                <div class="messages_section">
+                    <div class="messages_container_box">
+                        {% for message in chat_data %}
+
+                            <div class="individual_message">
+
+                                <img class="message_tail_icon"
+                                 src="{% static 'assets/app_icons/message_tail.png' %}">
+
+                                <div class="message_contents">
+
+                                    <p   class="message_text">{{ message.message_text }}</p>
+
+                                        <div class="individual_message_metadata">
+                                            <p   class="time_element message_time">
+                                                {{ message.date_posted|date:"g:i A" }}
+                                            </p>
+                                            <img class="sent_checked_icon"
+                                                 src="{% static 'assets/app_icons/sent_checked_icon_light.png' %}">
+                                        </div>
+
+                                </div>
+
+                            </div>
+
+
+                        {% endfor %}
+                    </div>
+
+
+
+                </div>
+
+                <div class="input_bar">
+                    <img style="padding-top: 3px"
+                            src="{% static 'assets/app_icons/paper_clip.jpg' %}">
+
+                    <form method="post" id="message_form" class="text_input">
+                        {% csrf_token %}
+                        <input
+                                class="text_input"
+                                type="text"
+                                name="message_text"
+                                placeholder="Write a message..."
+                        >
+                    </form>
+
+                    <!-- copy-pasted from AI for this one, I don't know JS -->
+                    <script>
+                        document.getElementById("message_form").addEventListener("keypress", function (e) {
+                            if (e.key === "Enter") {
+                                e.preventDefault();
+                                this.submit();
+                            }
+                        });
+                    </script>
+
+                    <img style="justify-self: flex-end" src="{% static 'assets/app_icons/emoji_voice.jpg' %}">
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+</body>
+</html>
