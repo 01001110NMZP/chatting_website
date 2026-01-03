@@ -9,6 +9,15 @@
     {% bootstrap_css %}
     {% bootstrap_javascript %}
 
+    {% load static %}
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/images/favicon.ico' %}">
+
+    <style>
+        .mb-4 {
+            margin-bottom: 0!important;
+        }
+    </style>
+
 </head>
 <body>
 
@@ -18,9 +27,11 @@
      -->
 
 
-    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
+    <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border"
+         style="background-color: #313c49!important;
+                border-style: hidden!important;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'chat_rooms:home' %}">Home Page</a>
+            <a class="navbar-brand" href="{% url 'chat_rooms:home' %}" style="color: white">Home Page</a>
 
             <button class="navbar-toggler" type="button" data-base-toggle="collapse"
                     data-bs-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -33,7 +44,8 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'chat_rooms:chatroom_list' %}">
+                        <a class="nav-link" href="{% url 'chat_rooms:selected_chatroom' %}"
+                           style="color: #d6d6d6;">
                             Chat room
                         </a>
                     </li>
